@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Demo Overview · SOZO LAB</title>
+<meta name="description" content="Two connected prototypes for Nestlé Vietnam: the Consumer Truth Hub and the Outcome Survey for kids' energy drinks.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#F4F3F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17130F" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nestlé Vietnam Demo · SOZO LAB">
+<meta property="og:description" content="Consumer Truth Hub and the Outcome Survey for kids' energy drinks. Sample data, prepared for FOOD01 / BUC2.2.">
+<meta property="og:image" content="https://buc2-2-food1-demo.sozolab.tech/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#F4F3F1; --surface:#FFFFFF; --fg:#30271D; --fg2:#5E6370; --fg3:#6E7482;
+  --line:#E2DFDB; --line2:#EAE7E3; --accent:#17668C; --accent-soft:#E8F1F5;
+  --ink:#30271D; --on-ink:#FFFFFF; --tint-hub:#E4EEF3; --tint-sv:#ECE6DF; --phone:#211C17;
+  --shadow:0 1px 2px rgba(48,39,29,.05),0 24px 48px -28px rgba(48,39,29,.40);
+  --font:"Roboto",Arial,Helvetica,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#17130F; --surface:#211C17; --fg:#F2EEE9; --fg2:#BDB6AD; --fg3:#9A938A;
+    --line:#3A332C; --line2:#2E2822; --accent:#7DB8D6; --accent-soft:rgba(125,184,214,.14);
+    --ink:#F2EEE9; --on-ink:#17130F; --tint-hub:#1D2A31; --tint-sv:#2A231D; --phone:#0B0907;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8);
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 var(--font);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+@media (min-width:720px){.wrap{padding-left:32px;padding-right:32px}}
+
+/* top */
+.top{display:flex;align-items:center;gap:14px;padding-top:20px;padding-bottom:20px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.brand img{height:42px;width:auto}
+.brand span{display:flex;flex-direction:column;line-height:1.25;padding-left:12px;border-left:1.5px solid var(--line);min-width:0}
+.brand b{font-size:15px;font-weight:600;white-space:nowrap}
+.brand small{font-size:13px;color:var(--fg2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pill{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--fg2);background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:999px;white-space:nowrap}
+.pill i{width:7px;height:7px;border-radius:50%;background:#C98A0B}
+
+/* hero */
+.hero{padding-top:40px;padding-bottom:40px}
+.eyebrow{margin:0 0 18px;font-size:14px;font-weight:600;color:var(--accent);letter-spacing:.01em}
+h1{margin:0;font-size:clamp(36px,6vw,64px);font-weight:300;letter-spacing:-.03em;line-height:1.04;max-width:15ch;text-wrap:balance}
+.lede{margin:24px 0 0;font-size:clamp(17px,1.6vw,19px);color:var(--fg2);max-width:62ch;text-wrap:pretty}
+
+/* app cards */
+.apps{display:grid;gap:24px;padding-bottom:72px}
+@media (min-width:900px){.apps{grid-template-columns:1fr 1fr}}
+.app{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+.shot{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:var(--tint-hub)}
+.shot.sv{background:var(--tint-sv)}
+.shot .desk{position:absolute;left:7%;top:10%;width:118%;max-width:none;border-radius:10px 0 0 0;box-shadow:0 0 0 1px rgba(48,39,29,.10),0 20px 40px -18px rgba(29,53,87,.45);transition:transform .35s ease}
+.phone{position:absolute;left:50%;top:10%;width:35%;transform:translateX(-50%);border-radius:30px;border:7px solid var(--phone);background:var(--phone);box-shadow:0 26px 50px -22px rgba(48,39,29,.55);overflow:hidden;transition:transform .35s ease}
+.phone img{border-radius:23px}
+.sv .chip{position:absolute;left:7%;bottom:12%;display:flex;flex-direction:column;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;box-shadow:var(--shadow);font-size:12.5px;color:var(--fg2);max-width:38%}
+.sv .chip b{font-size:15px;color:var(--fg);font-weight:600}
+.sv .chip.r{left:auto;right:7%;bottom:auto;top:16%}
+@media (hover:hover){.shot:hover .desk{transform:translateY(-6px)}.shot:hover .phone{transform:translate(-50%,-6px)}}
+.body{display:flex;flex-direction:column;gap:14px;padding:26px 26px 28px;flex:1}
+@media (min-width:600px){.body{padding:30px 32px 32px}}
+.kicker{margin:0;font-size:13.5px;font-weight:600;color:var(--accent)}
+.app h2{margin:-6px 0 0;font-size:clamp(24px,2.6vw,30px);font-weight:600;letter-spacing:-.02em;line-height:1.2}
+.app h2 em{font-style:normal;color:var(--fg3);font-weight:400}
+.app p.d{margin:0;color:var(--fg2)}
+.ticks{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+.ticks li{position:relative;padding-left:28px;font-size:15px}
+.ticks li::before{content:"";position:absolute;left:0;top:3px;width:18px;height:18px;border-radius:50%;background:var(--accent-soft)}
+.ticks li::after{content:"";position:absolute;left:6.5px;top:6.5px;width:4.5px;height:8px;border:solid var(--accent);border-width:0 1.8px 1.8px 0;transform:rotate(45deg)}
+.cta{display:flex;align-items:center;flex-wrap:wrap;gap:12px 16px;margin-top:auto;padding-top:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--on-ink);text-decoration:none;font-weight:600;font-size:16px;padding:14px 22px;border-radius:12px;min-height:50px;transition:filter .15s}
+.btn svg{width:16px;height:16px;transition:transform .2s}
+.btn:hover{filter:brightness(1.15)}.btn:hover svg{transform:translateX(3px)}
+.hint{font-size:13.5px;color:var(--fg3)}
+
+/* sections */
+.sec{padding-bottom:72px}
+.sec-h{display:flex;flex-direction:column;gap:8px;margin-bottom:26px}
+.sec-h h2{margin:0;font-size:clamp(26px,3vw,34px);font-weight:500;letter-spacing:-.02em;line-height:1.15}
+.sec-h p{margin:0;color:var(--fg2);max-width:64ch}
+
+/* flow */
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:16px;counter-reset:s}
+@media (min-width:640px){.steps{grid-template-columns:1fr 1fr}}
+@media (min-width:1040px){.steps{grid-template-columns:repeat(4,1fr)}}
+.tile{display:flex;flex-direction:column;height:100%;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;transition:border-color .15s,transform .2s}
+.tile:hover{border-color:var(--accent);transform:translateY(-2px)}
+.tile .th{aspect-ratio:16/10;background:var(--line2);border-bottom:1px solid var(--line);overflow:hidden}
+.tile .th img{width:100%;height:100%;object-fit:cover;object-position:top left}
+.tile .tb{display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px;flex:1}
+.tile b{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600}
+.tile b .n{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:600;background:var(--ink);color:var(--on-ink);flex:none}
+.tile p{margin:0;font-size:14.5px;color:var(--fg2);line-height:1.5}
+.tile .where{margin-top:auto;padding-top:8px;display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:500;color:var(--accent)}
+.tile .where svg{width:14px;height:14px}
+.more{display:grid;gap:16px}
+@media (min-width:640px){.more{grid-template-columns:repeat(3,1fr)}}
+
+/* notes */
+.notes{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+@media (min-width:760px){.notes{grid-template-columns:1fr 1fr}}
+.notes li{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.notes .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);flex:none}
+.notes .ic svg{width:18px;height:18px}
+.notes b{display:block;font-size:15.5px;font-weight:600;margin-bottom:2px}
+.notes span{font-size:14.5px;color:var(--fg2)}
+
+footer{border-top:1px solid var(--line);padding-top:24px;padding-bottom:calc(32px + env(safe-area-inset-bottom));display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;font-size:13.5px;color:var(--fg3)}
+footer img{height:30px;width:auto}
+footer .sp{margin-left:auto}
+@media (max-width:560px){.pill{display:none}footer .sp{margin-left:0;width:100%}
+  .sv .chip{padding:7px 10px;font-size:11px;border-radius:10px;left:4%}.sv .chip b{font-size:13px}.sv .chip.r{right:4%;top:auto;bottom:30%}.sv .chip:not(.r){bottom:8%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top wrap">
+  <a class="brand" href="/" aria-label="Consumer Truth Hub">
+    <img src="/assets/sozolab-logo.png" alt="SOZO LAB" width="28" height="42">
+    <span><b>FOOD01 · BUC2.2</b><small>Nestlé Vietnam demo</small></span>
+  </a>
+  <span class="pill"><i></i>Sample data, nothing is saved</span>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow">Consumer evidence demo · Nestlé Vietnam</p>
+    <h1>From what consumers say to what to build next</h1>
+    <p class="lede">Two connected prototypes. The Consumer Truth Hub gathers feedback from every channel and maps it to the jobs consumers are trying to get done. The Outcome Survey asks parents to rate those needs, so the team can see which ones matter most and are served worst.</p>
+  </section>
+
+  <section class="apps wrap" aria-label="The two prototypes">
+    <article class="app">
+      <a class="shot" href="/" tabindex="-1" aria-hidden="true">
+        <img class="desk" src="/assets/shots/hub-dashboard.webp" alt="" width="1440" height="900">
+      </a>
+      <div class="body">
+        <p class="kicker">For Nestlé teams · Web app</p>
+        <h2>Consumer Truth Hub</h2>
+        <p class="d">One place to read consumer feedback across 18 brands, tie it to customer jobs and outcomes, and see where needs are underserved.</p>
+        <ul class="ticks">
+          <li>Inbox and mapping for feedback from Shopee, Lazada, Careline, Facebook and complaints</li>
+          <li>Survey results and an Innovation Landscape of underserved needs</li>
+          <li>Chat with Evidence: ask a question, get an answer with cited sources</li>
+        </ul>
+        <div class="cta">
+          <a class="btn" href="/">Open the Hub <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <span class="hint">Best on a laptop</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="app">
+      <a class="shot sv" href="/s/v1/" tabindex="-1" aria-hidden="true">
+        <span class="phone"><img src="/assets/shots/survey-question-mobile.webp" alt="" width="780" height="1688"></span>
+        <span class="chip"><b>23 statements</b>across 8 job steps</span>
+        <span class="chip r"><b>About 5 min</b>on any phone</span>
+      </a>
+      <div class="body">
+        <p class="kicker">For parents · Mobile survey</p>
+        <h2>Outcome Survey <em>· Kids’ energy drinks</em></h2>
+        <p class="d">What parents receive by Zalo or email. They rate the needs behind giving their child Milo for school and sport.</p>
+        <ul class="ticks">
+          <li>Importance first, then satisfaction, on a 5-point scale</li>
+          <li>One statement per screen, with keyboard shortcuts on desktop</li>
+          <li>Ends by showing the parent the need with their biggest gap</li>
+        </ul>
+        <div class="cta">
+          <a class="btn" href="/s/v1/">Take the survey <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <span class="hint">Tap “Use sample data” to skip the form</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="flow-h">
+    <div class="sec-h">
+      <h2 id="flow-h">How the two connect</h2>
+      <p>The Hub finds the needs; the survey measures them. Each step opens the matching screen.</p>
+    </div>
+    <ol class="steps">
+      <li><a class="tile" href="/inbox">
+        <span class="th"><img src="/assets/shots/step-inbox.webp" alt="Hub Inbox with feedback waiting to be verified" width="880" height="550" loading="lazy"></span>
+        <span class="tb"><b><span class="n">1</span>Listen</b><p>Feedback from Shopee, Lazada, Careline, Facebook and the complaints system lands in one Inbox.</p><span class="where">Hub › Inbox <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></span>
+      </a></li>
+      <li><a class="tile" href="/mapping">
+        <span class="th"><img src="/assets/shots/step-mapping.webp" alt="Hub Mapping page with products and flagged jobs" width="880" height="550" loading="lazy"></span>
+        <span class="tb"><b><span class="n">2</span>Map</b><p>Each piece of feedback is tied to a step of the customer’s job and the outcome they want.</p><span class="where">Hub › Mapping <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></span>
+      </a></li>
+      <li><a class="tile" href="/s/v1/">
+        <span class="th"><img src="/assets/shots/survey-question.webp" alt="Survey statement rated for importance and satisfaction" width="1280" height="800" loading="lazy"></span>
+        <span class="tb"><b><span class="n">3</span>Ask</b><p>Parents rate those outcomes: how important each one is, and how satisfied they are today.</p><span class="where">Outcome Survey <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></span>
+      </a></li>
+      <li><a class="tile" href="/surveys/v1">
+        <span class="th"><img src="/assets/shots/step-results.webp" alt="Hub survey results for the kids' energy drinks survey" width="880" height="550" loading="lazy"></span>
+        <span class="tb"><b><span class="n">4</span>Prioritise</b><p>Results show which needs matter a lot but are poorly served, ready for the innovation team.</p><span class="where">Hub › Surveys <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></span>
+      </a></li>
+    </ol>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="more-h">
+    <div class="sec-h">
+      <h2 id="more-h">Also worth a look</h2>
+    </div>
+    <div class="more">
+      <a class="tile" href="/insights">
+        <span class="th"><img src="/assets/shots/more-insights.webp" alt="Consumer Insights signal landscape" width="880" height="550" loading="lazy"></span>
+        <span class="tb"><b>Consumer Insights</b><p>Published needs for each product, with a brief and Chat with Evidence.</p><span class="where">Hub › Consumer Insights <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></span>
+      </a>
+      <a class="tile" href="/landscape">
+        <span class="th"><img src="/assets/shots/more-landscape.webp" alt="Innovation Landscape chart of products by opportunity" width="880" height="550" loading="lazy"></span>
+        <span class="tb"><b>Innovation Landscape</b><p>Every product plotted by survey opportunity and how many of its needs are underserved.</p><span class="where">Hub › Innovation Landscape <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></span>
+      </a>
+      <a class="tile" href="/s/v1/">
+        <span class="th"><img src="/assets/shots/more-finish.webp" alt="Survey thank-you screen with reward and biggest gap" width="880" height="550" loading="lazy"></span>
+        <span class="tb"><b>Survey thank-you</b><p>Each parent sees the need they rated as the biggest gap, plus the status of their reward.</p><span class="where">End of the survey <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="about-h">
+    <div class="sec-h"><h2 id="about-h">About this demo</h2></div>
+    <ul class="notes">
+      <li><span class="ic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="8" cy="4" rx="5" ry="2"/><path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/></svg></span><div><b>Sample data only</b><span>Brand names are real; every figure, person and comment is made up for the demo.</span></div></li>
+      <li><span class="ic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg></span><div><b>Nothing is saved or sent</b><span>Everything stays in your browser tab, and reloading the Hub resets it. The survey’s auto-save, “Finish later” link and top-up are simulated.</span></div></li>
+      <li><span class="ic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H7l-3 2.5v-2.5a1.5 1.5 0 0 1-1.5-1.5z"/></svg></span><div><b>Chat with Evidence answers offline here</b><span>It answers from the evidence built into the page. Hosted inside Claude, it can answer free-form with Claude.</span></div></li>
+      <li><span class="ic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 1.8l5 2v4c0 3-2.2 5.3-5 6.4-2.8-1.1-5-3.4-5-6.4v-4z"/></svg></span><div><b>Confidential</b><span>Prepared by SOZO LAB for Nestlé Vietnam. Please keep the link within the project team.</span></div></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap">
+  <img src="/assets/sozolab-logo.png" alt="SOZO LAB" width="20" height="30">
+  <span>SOZO LAB × Nestlé Vietnam · FOOD01 / BUC2.2</span>
+  <span class="sp">Hub v1.4.2 · Updated 17 Nov 2026</span>
+</footer>
+
+</body>
+</html>
