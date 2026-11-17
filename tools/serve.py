@@ -1,9 +1,9 @@
-"""Local preview server that behaves like Cloudflare Pages for this site.
+"""Local preview server that behaves like GitHub Pages for this site.
 
 Real files are served as-is (/s/v1/, /overview/, /assets/...). Any other path
-(/, /surveys, /surveys/v1, /inbox, ...) gets index.html, the Hub, which reads
-the path and shows the matching page. Cloudflare Pages does the same when the
-site has no top-level 404.html.
+(/surveys, /surveys/v1, /inbox, ...) gets 404.html, a copy of the Hub, which
+reads the path and shows the matching page. GitHub Pages does the same, with
+HTTP status 404; visitors don't see a difference.
 
 Usage: python3 tools/serve.py [port]   (default 4173)
 """
@@ -11,18 +11,23 @@ import functools
 import http.server
 import os
 import sys
-from urllib.parse import urlsplit
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def send_head(self):
-        if not os.path.exists(self.translate_path(self.path)):
-            last = urlsplit(self.path).path.rstrip("/").rsplit("/", 1)[-1]
-            if "." not in last:  # a route, not a missing asset
-                self.path = "/index.html"
-        return super().send_head()
+        if os.path.exists(self.translate_path(self.path)):
+            return super().send_head()
+        try:
+            f = open(os.path.join(ROOT, "404.html"), "rb")
+        except OSError:
+            return super().send_head()
+        self.send_response(404)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Content-Length", str(os.fstat(f.fileno()).st_size))
+        self.end_headers()
+        return f
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 """Turn a saved claude.ai artifact page into a page on this site.
 
 Usage (run from the demo-site folder):
-  python3 -I tools/import_artifact.py hub    <saved-hub.html>     -> index.html
+  python3 -I tools/import_artifact.py hub    <saved-hub.html>     -> index.html and 404.html
   python3 -I tools/import_artifact.py survey <saved-survey.html>  -> s/v1/index.html
 
 Both: the artifact service leaves the page's <title>, fonts and a claude.ai-only
@@ -145,9 +145,12 @@ def main():
         head.replace("<meta charset=utf8>", '<meta charset="utf-8">')
         + "\n" + "\n".join(moved) + "\n" + "".join(extra) + "\n</head>\n<body>\n" + body
     )
-    with open(cfg["out"], "w", encoding="utf-8") as f:
-        f.write(out)
-    print(f"wrote {cfg['out']} ({len(out):,} bytes)")
+    # GitHub Pages has no rewrites: it serves 404.html for any path that isn't a file.
+    # Making 404.html a copy of the Hub lets /surveys, /inbox, ... open the right page.
+    for path in [cfg["out"]] + (["404.html"] if kind == "hub" else []):
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(out)
+        print(f"wrote {path} ({len(out):,} bytes)")
 
 
 if __name__ == "__main__":

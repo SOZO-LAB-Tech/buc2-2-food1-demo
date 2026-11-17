@@ -1,6 +1,6 @@
 # FOOD01 · BUC2.2 demo site
 
-The demo site for Nestlé Vietnam, hosted on Cloudflare Pages at **https://buc2-2-food1-demo.sozolab.tech**.
+The demo site for Nestlé Vietnam, hosted on GitHub Pages at **https://buc2-2-food1-demo.sozolab.tech**, with DNS on Cloudflare.
 
 | URL | Page |
 |---|---|
@@ -19,25 +19,30 @@ Everything is plain static files with no build step. All data is sample data and
 
 ```
 index.html          Consumer Truth Hub (from the claude.ai artifact, with clean-path routing added)
+404.html            identical copy of index.html (see below)
 s/v1/index.html     Outcome Survey (from the claude.ai artifact)
 overview/index.html intro page
 assets/             logo, screenshots, link-preview image (og.jpg)
-_headers            Cloudflare response headers: noindex, basic security headers, asset caching
+CNAME               custom domain for GitHub Pages
+.nojekyll           tells GitHub Pages to publish the files as-is
+_headers            response headers, used only if the site is moved to Cloudflare Pages
 robots.txt          keeps search engines out
 favicon.svg
 tools/import_artifact.py   re-imports either app from claude.ai
-tools/serve.py             local preview that behaves like Cloudflare Pages
+tools/serve.py             local preview that behaves like GitHub Pages
 ```
 
-**Don't add a top-level `404.html`.** Without one, Cloudflare Pages serves `index.html` for any path that isn't a file. That's how `/surveys` and the other clean URLs work. GitHub Pages has no equivalent, so it can't host this version.
+**Why 404.html is a copy of the Hub:** GitHub Pages can't rewrite URLs. For any path that isn't a file, it serves `404.html`. Because that file is the Hub, `/surveys`, `/inbox` and the other paths open the right page. These pages return HTTP status 404, which visitors don't see, but Zalo or Slack may skip the link preview for them. The home page `/` returns 200. The import script writes both files, so keep them identical.
 
-## Deploy on Cloudflare Pages
+## Hosting
 
-1. In Cloudflare, open **Workers & Pages › Create › Pages**. Then do one of these:
-   - **Connect to Git** and pick the GitHub repository. Framework preset: **None**. Leave the build command empty. Set the output directory to `/`.
-   - **Upload assets** and drag in this folder. You'll need to re-upload after every change.
-2. In the project, open **Custom domains** and add `buc2-2-food1-demo.sozolab.tech`. `sozolab.tech` is already on Cloudflare, so the DNS record is created for you.
-3. Optional: limit who can open it with Cloudflare Access (**Zero Trust › Access › Applications**), for example to `@sozolab.tech` emails.
+- **GitHub Pages:** repository `SOZO-LAB-Tech/buc2-2-food1-demo` (public), branch `main`, folder `/`. Every push to `main` republishes the site within about a minute.
+- **Custom domain:** set in **Settings › Pages** and in the `CNAME` file.
+- **DNS (Cloudflare, zone `sozolab.tech`):** record `CNAME buc2-2-food1-demo → sozo-lab-tech.github.io`, proxy status **DNS only** (grey cloud). Once GitHub shows the certificate as ready, tick **Enforce HTTPS** under Settings › Pages.
+- **Optional:** verify `sozolab.tech` for the organization (**Org settings › Pages › Add a domain**, a TXT record). That stops other GitHub accounts from claiming subdomains of it.
+- **Privacy:** the repository and the site are public, so anyone with the link can open them. Search engines are asked not to index the site (`noindex` and `robots.txt`).
+
+To move to Cloudflare Pages instead, connect the repository there with no build command and output directory `/`. The site works there unchanged.
 
 ## Preview locally
 
