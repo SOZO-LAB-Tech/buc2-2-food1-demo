@@ -1,0 +1,185 @@
+{
+ "brand": "Nescafé",
+ "year": 2025,
+ "survey": {
+  "name": "Nescafé consumer survey 2025",
+  "respondents": 1240,
+  "complained": 223
+ },
+ "feedback": {
+  "total": 8412,
+  "complaints": 1146
+ },
+ "sources": [
+  {
+   "name": "Shopee reviews",
+   "n": 412
+  },
+  {
+   "name": "Careline",
+   "n": 231
+  },
+  {
+   "name": "Lazada reviews",
+   "n": 188
+  },
+  {
+   "name": "Complaints system",
+   "n": 162
+  },
+  {
+   "name": "Facebook Page",
+   "n": 153
+  }
+ ],
+ "themes": [
+  {
+   "name": "Too sweet (3-in-1)",
+   "n": 351,
+   "quote": "Nescafé 3in1 is far too sweet now. I want the same coffee with less sugar."
+  },
+  {
+   "name": "Promotion price changes at checkout",
+   "n": 261,
+   "quote": "The promo price on Shopee was different from what I was charged at checkout."
+  },
+  {
+   "name": "Strength and caffeine labels unclear",
+   "n": 206,
+   "quote": "I can't tell which pack is stronger. The strength labels mean nothing to me."
+  },
+  {
+   "name": "Sachets tear or powder clumps",
+   "n": 168,
+   "quote": "Sachets tear in the wrong place and powder spills everywhere."
+  },
+  {
+   "name": "Out of stock online",
+   "n": 160,
+   "quote": "Nescafé Café Việt has been out of stock on Shopee for two weeks."
+  }
+ ],
+ "dims": {
+  "age": {
+   "label": "Age group",
+   "ordinal": true,
+   "groups": [
+    {
+     "name": "18–24",
+     "total": 1310,
+     "n": 214,
+     "top": "Out of stock online",
+     "top_n": 73
+    },
+    {
+     "name": "25–34",
+     "total": 2950,
+     "n": 452,
+     "top": "Too sweet (3-in-1)",
+     "top_n": 190
+    },
+    {
+     "name": "35–44",
+     "total": 2240,
+     "n": 279,
+     "top": "Promotion price changes at checkout",
+     "top_n": 95
+    },
+    {
+     "name": "45–54",
+     "total": 1180,
+     "n": 129,
+     "top": "Strength and caffeine labels unclear",
+     "top_n": 44
+    },
+    {
+     "name": "55+",
+     "total": 732,
+     "n": 72,
+     "top": "Sachets tear or powder clumps",
+     "top_n": 27
+    }
+   ]
+  },
+  "region": {
+   "label": "Region",
+   "ordinal": false,
+   "groups": [
+    {
+     "name": "Hồ Chí Minh City",
+     "total": 3620,
+     "n": 528,
+     "top": "Too sweet (3-in-1)",
+     "top_n": 159
+    },
+    {
+     "name": "Hà Nội",
+     "total": 2510,
+     "n": 331,
+     "top": "Too sweet (3-in-1)",
+     "top_n": 106
+    },
+    {
+     "name": "Mekong Delta",
+     "total": 820,
+     "n": 118,
+     "top": "Too sweet (3-in-1)",
+     "top_n": 32
+    },
+    {
+     "name": "Đà Nẵng",
+     "total": 640,
+     "n": 79,
+     "top": "Too sweet (3-in-1)",
+     "top_n": 24
+    },
+    {
+     "name": "Other provinces",
+     "total": 822,
+     "n": 90,
+     "top": "Too sweet (3-in-1)",
+     "top_n": 30
+    }
+   ]
+  },
+  "gender": {
+   "label": "Gender",
+   "ordinal": false,
+   "groups": [
+    {
+     "name": "Female",
+     "total": 4630,
+     "n": 668,
+     "top": "Too sweet (3-in-1)",
+     "top_n": 205
+    },
+    {
+     "name": "Male",
+     "total": 3410,
+     "n": 431,
+     "top": "Too sweet (3-in-1)",
+     "top_n": 133
+    },
+    {
+     "name": "Not stated",
+     "total": 372,
+     "n": 47,
+     "top": "Too sweet (3-in-1)",
+     "top_n": 13
+    }
+   ]
+  }
+ },
+ "file": {
+  "name": "nescafe-complaints-2025.xlsx",
+  "url": "/assets/demo/nescafe-complaints-2025.xlsx",
+  "bytes": 79600,
+  "sheets": [
+   "Summary",
+   "By age group",
+   "By region",
+   "By gender",
+   "Complaints"
+  ]
+ }
+}

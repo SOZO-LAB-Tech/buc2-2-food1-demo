@@ -29,6 +29,8 @@ _headers            response headers, used only if the site is moved to Cloudfla
 robots.txt          keeps search engines out
 favicon.svg
 tools/import_artifact.py   re-imports either app from claude.ai
+tools/build_demo_data.py   builds the chat demo's data and Excel file
+assets/demo/               Chat with Evidence demo: script, data, Excel file
 tools/serve.py             local preview that behaves like GitHub Pages
 ```
 
@@ -43,6 +45,32 @@ tools/serve.py             local preview that behaves like GitHub Pages
 - **Privacy:** the repository and the site are public, so anyone with the link can open them. Search engines are asked not to index the site (`noindex` and `robots.txt`).
 
 To move to Cloudflare Pages instead, connect the repository there with no build command and output directory `/`. The site works there unchanged.
+
+## Chat with Evidence demo
+
+A scripted conversation in the Hub's **Chat with Evidence** panel (the round button at the bottom right of every page):
+
+1. **Ask about complaints.** For example: "Did anyone complain about Nescafé in 2025?" This is also the first suggestion in an empty chat. The answer gives the survey share, the number of complaint reports and the top three themes with quotes. It ends by offering a breakdown.
+2. **Ask for a breakdown.** "Show by age group", "by region", "by gender", or "demographic" (gender and region together). The answer adds a donut chart of the share of complaints and a bar chart of the complaint rate per group.
+3. **Ask to download.** "Download as Excel" or "export". The answer shows a file card with a real `.xlsx` file: summary, one sheet per breakdown with charts, and all 1,146 complaint rows.
+4. **Ask what to fix first.** "What should we fix first?" The answer gives three priorities, each tied to a theme and an age group.
+
+Each answer ends with chips for the next step. Questions can also be typed freely; the demo recognises the wording loosely, and Vietnamese without accents works for the main terms. Asking about Nescafé from another product's chat switches the chat to Nescafé. Any question the demo doesn't recognise gets the Hub's normal answer.
+
+| File | What it is |
+|---|---|
+| `assets/demo/demo-chat.js` | Recognises the questions and writes the answers, charts, file card and chips. Loaded after the Hub's script. |
+| `assets/demo/nescafe-2025.json` | The numbers the chat uses |
+| `assets/demo/nescafe-complaints-2025.xlsx` | The file offered for download |
+| `tools/build_demo_data.py` | Writes both data files from one set of numbers, so they always agree |
+
+All figures are made-up sample data, and the Excel file says so on its first sheet. To change the story, edit the numbers at the top of `tools/build_demo_data.py`, then run:
+
+```bash
+python3 tools/build_demo_data.py
+```
+
+It needs `openpyxl`.
 
 ## Preview locally
 

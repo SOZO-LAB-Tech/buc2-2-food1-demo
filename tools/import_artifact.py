@@ -16,7 +16,8 @@ The site serves it at the root and shows clean paths instead (/, /surveys,
   * swaps its two history.replaceState('#...') calls for __replaceRoute(...),
   * sends unknown paths to the dashboard (the Hub's own fallback was the Inbox),
   * sends sign-in to the dashboard (the home page) instead of the Inbox,
-  * points the live survey's link (v1) at the real survey page, /s/v1/.
+  * points the live survey's link (v1) at the real survey page, /s/v1/,
+  * loads assets/demo/demo-chat.js, the scripted Chat with Evidence demo.
 Every patch is checked; if the Hub's code changed and a patch no longer applies,
 the script stops instead of writing a half-patched page.
 """
@@ -60,6 +61,9 @@ ROUTER_HEAD = r"""<style>.svlive{color:inherit;text-decoration:none}.svlive:hove
 })();
 </script>
 """
+
+# Scripted Chat with Evidence demo (Nescafé complaints, 2025). Must load after the Hub's script.
+DEMO_TAIL = '<script src="/assets/demo/demo-chat.js"></script>\n'
 
 ROUTER_TAIL = r"""<script>
 /* Demo site: after the Hub handles a #route, show it as a clean path; re-render on Back/Forward. */
@@ -139,7 +143,7 @@ def main():
             sys.exit("expected exactly one <script> in the Hub")
         body = body.replace("<script>", ROUTER_HEAD + "<script>", 1)
         tail = body.rindex("</script>") + len("</script>")
-        body = body[:tail] + "\n" + ROUTER_TAIL + body[tail:]
+        body = body[:tail] + "\n" + ROUTER_TAIL + DEMO_TAIL + body[tail:]
 
     out = (
         head.replace("<meta charset=utf8>", '<meta charset="utf-8">')
